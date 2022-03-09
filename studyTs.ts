@@ -37,7 +37,7 @@ const dates = [
 //     {dt: new Date()},]
 new Map()
 new Set()
-let arr = [1,1,2,2,3,4,5,6,7,7,8,8]
+let arr2 = [1,1,2,2,3,4,5,6,7,7,8,8]
 // [1,2,3,4,5,6,7,8]
 
 let uniqSet = new Set(arr)

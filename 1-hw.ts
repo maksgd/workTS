@@ -1,17 +1,15 @@
-interface IObjTemp {
-    temperature: string;
-    city: string;
-    optional?: boolean
-}
-
 interface IDataObj {
-    dt: string;
-    quantity: number;
-    age: number | null;
-    temp: IObjTemp
+  dt: string,
+  quantity: number,
+  age: number | null,
+  temp: {
+    temperature: string,
+    city: string,
+    optional?: boolean
+  }
 }
 
-const data : IDataObj[] = [
+let data : IDataObj[] = [
     {
       "dt": "01-01-2021",
       "quantity": 100,
@@ -66,36 +64,18 @@ const data : IDataObj[] = [
 ]
 
 
-let unique = Array.from(new Set(data.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
+// let unique = Array.from(new Set(data.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
+let setData = new Set<String>(data.map((item) => item["dt"]));
 
-// console.log(unique);
+console.log(setData);
 
 
-let dataMap = new Map([[
-        '03-01-2021',[
-            {
-                "quantity": 700,
-                "age": 27,
-                "temp": {
-                    "temperature": "50 degrees",
-                    "city": "Kursk",
-                    "optional": true
-                }
-            }
-        ]
-    ],
-    [
-        '01-01-2021',[
-            {
-                "quantity": 100,
-                "age": null,
-                "temp": {
-                    "temperature": "100 degrees",
-                    "city": "Norway"
-                }
-            }
-        ]
-    ]
-]);
+let mapData = new Map<String, IDataObj[]>();
+let index = setData.values();
 
-// console.log(dataMap.get('01-01-2021'))
+for (let i = 0; i < setData.size; i++) {
+  let curIndex = index.next().value;
+  mapData.set(curIndex, data.filter(item => item["dt"] == curIndex));
+}
+
+console.log(mapData);
