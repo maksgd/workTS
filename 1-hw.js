@@ -52,15 +52,21 @@ var data = [
     }
 ];
 // let unique = Array.from(new Set(data.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
-var setData = new Set(data.map(function (item) { return item["dt"]; }));
-console.log(setData);
-var mapData = new Map();
-var index = setData.values();
-var _loop_1 = function (i) {
-    var curIndex = index.next().value;
-    mapData.set(curIndex, data.filter(function (item) { return item["dt"] == curIndex; }));
-};
-for (var i = 0; i < setData.size; i++) {
-    _loop_1(i);
-}
-console.log(mapData);
+// console.log(setData);
+// =========================================================================
+// let mapData = new Map<string, IDataObj[]>();
+// let index = setData.values();
+// for (let i = 0; i < setData.size; i++) {
+//   let curIndex = index.next().value;
+//   mapData.set(curIndex, data.filter(item => item["dt"] == curIndex));
+// }
+// console.log(mapData);
+// =========================================================================
+var setDate = new Set(data.map(function (item) { return item.dt; }));
+// let setDate = [...new Set<string>(data.map(i => i.dt))];
+console.log(setDate);
+var mapDate = new Map();
+setDate.forEach(function (date) {
+    mapDate.set(date, data.filter(function (i) { return i.dt === date; }));
+});
+console.log(mapDate);

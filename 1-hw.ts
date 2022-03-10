@@ -1,4 +1,5 @@
-interface IDataObj {
+function hW1 () {
+  interface IDataObj {
   dt: string,
   quantity: number,
   age: number | null,
@@ -65,17 +66,32 @@ let data : IDataObj[] = [
 
 
 // let unique = Array.from(new Set(data.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
-let setData = new Set<String>(data.map((item) => item["dt"]));
 
-console.log(setData);
+// console.log(setData);
+
+// =========================================================================
+// let mapData = new Map<string, IDataObj[]>();
+// let index = setData.values();
+
+// for (let i = 0; i < setData.size; i++) {
+//   let curIndex = index.next().value;
+//   mapData.set(curIndex, data.filter(item => item["dt"] == curIndex));
+// }
+// console.log(mapData);
+// =========================================================================
+
+let setDate = new Set<string>(data.map(item => item.dt));
+// let setDate = [...new Set<string>(data.map(i => i.dt))];
+
+console.log(setDate);
 
 
-let mapData = new Map<String, IDataObj[]>();
-let index = setData.values();
+let mapDate = new Map<string, any[]>()
+setDate.forEach(date => {
+  mapDate.set(date, data.filter(i => i.dt === date))
+})
 
-for (let i = 0; i < setData.size; i++) {
-  let curIndex = index.next().value;
-  mapData.set(curIndex, data.filter(item => item["dt"] == curIndex));
+console.log(mapDate);
 }
 
-console.log(mapData);
+hW1()
