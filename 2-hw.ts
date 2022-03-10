@@ -54,8 +54,8 @@ const data : string[][] = [
 
 function boolHom(data: string[][]) {
     for (let i = 0; i < data.length; i++) {
-        let [area, priw, ...otherInfo] = data[i]
-        let result:boolean = (area == '56' || area == '40' || (area < '40' && otherInfo[1] == 'Ленина')) 
+        let [area, , ,street] = data[i]
+        let result:boolean = (area == '56' || area == '40' || (area < '40' && street == 'Ленина')) 
         console.log(result);
     }
 }

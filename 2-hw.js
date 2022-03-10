@@ -37,8 +37,8 @@ var data = [
 // let setData = new Set<string[]>(data.map(item => item))
 function boolHom(data) {
     for (var i = 0; i < data.length; i++) {
-        var _a = data[i], area = _a[0], priw = _a[1], otherInfo = _a.slice(2);
-        var result = (area == '56' || area == '40' || (area < '40' && otherInfo[1] == 'Ленина'));
+        var _a = data[i], area = _a[0], street = _a[3];
+        var result = (area == '56' || area == '40' || (area < '40' && street == 'Ленина'));
         console.log(result);
     }
 }
