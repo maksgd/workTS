@@ -52,13 +52,12 @@ const data : string[][] = [
 // let setData = new Set<string[]>(data.map(item => item))
 
 
-function boolHom(data: string[]) {
-    const [area, priw, ...otherInfo] = data
-
-    let result:boolean = (area == '56' || area == '40' || (area < '40' && otherInfo[1] == 'Ленина')) 
-
-    return console.log(result);
-    
+function boolHom(data: string[][]) {
+    for (let i = 0; i < data.length; i++) {
+        let [area, priw, ...otherInfo] = data[i]
+        let result:boolean = (area == '56' || area == '40' || (area < '40' && otherInfo[1] == 'Ленина')) 
+        console.log(result);
+    }
 }
 
-boolHom(data[2])
+boolHom(data)
